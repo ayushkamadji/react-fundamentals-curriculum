@@ -1,4 +1,5 @@
 var React = require('react');
+var Link = require('react-router-dom').Link;
 var api = require('../utils/api');
 
 class WeatherRequestForm extends React.Component {
@@ -32,15 +33,21 @@ class WeatherRequestForm extends React.Component {
 
   render() {
     return (
-      <form className='request-form'>
+      <div className='request-form'>
         <input className='form-control' 
                type="text" 
                placeholder='Tebet, Jakarta' 
                name='city'
                value={this.state.city} 
                onChange={this.handleChange}/>
-        <button className='btn btn-success' onClick={this.handleClick}>Get Weather</button>
-      </form>
+        <Link className='btn btn-success'
+              to={{
+                pathname: 'forecast',
+                search: '?city=' + this.state.city
+              }}>
+              Get Weather
+        </Link>
+      </div>
     )
   }
 }

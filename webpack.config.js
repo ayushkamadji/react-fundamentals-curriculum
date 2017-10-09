@@ -6,7 +6,8 @@ var config = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
+    publicPath: '/'
   },
 
   module: {
@@ -15,6 +16,10 @@ var config = {
       { test: /\.css$/, use: ['style-loader', 'css-loader']},
       { test: /\.svg$/, use: 'file-loader' }
     ]
+  },
+
+  devServer: {
+    historyApiFallback: true
   },
 
   plugins: [

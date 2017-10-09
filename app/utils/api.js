@@ -9,7 +9,7 @@ function requestForecast(city) {
   var URI = window.encodeURI(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&type=accurate&APPID=${API_KEY}&cnt=5`);
   return axios.get(URI)
         .then(function(response) {
-          return response;
+          return response.data;
         })
         .catch(handleError);
 }
