@@ -84,3 +84,36 @@ body {
  .nav .request-form {
    flex-direction: row;
  }
+
+ .forecast-grid {
+   display: flex;
+   flex-flow: row wrap;
+   align-items: center;
+   justify-content: space-around;
+ }
+
+ .forecast-item {
+   display: flex;
+   flex-flow: column;
+   align-items: center;
+   justify-content: space-around;
+   margin: 20px;
+ }
+
+ .forecast-item img {
+   height: 130px;
+ }
+
+ .forecast-item h2 {
+   font-weight: 100;
+ }
+
+ .forecast-item h3 {
+   font-weight: 100;
+ }
+
+ .city-title {
+   font-size: 65px;
+   font-weight: 100;
+   text-align: center;
+ }

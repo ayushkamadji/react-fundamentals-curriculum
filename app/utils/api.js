@@ -6,7 +6,7 @@ function handleError(error) {
 }
 
 function requestForecast(city) {
-  var URI = window.encodeURI(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&type=accurate&APPID=${API_KEY}&cnt=5`);
+  var URI = window.encodeURI(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&type=accurate&APPID=${API_KEY}&cnt=5&units=metric`);
   return axios.get(URI)
         .then(function(response) {
           return response.data;
@@ -15,7 +15,7 @@ function requestForecast(city) {
 }
 
 function requestCurrent(city) {
-  var URI = window.encodeURI(`http://api.openweathermap.org/data/2.5/weather?q=${city}&type=accurate&APPID=${API_KEY}`);
+  var URI = window.encodeURI(`http://api.openweathermap.org/data/2.5/weather?q=${city}&type=accurate&APPID=${API_KEY}&units=metric`);
   return axios.get(URI)
         .then(function(response) {
           return response.data;
