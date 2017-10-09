@@ -1,34 +1,23 @@
 var React = require('react');
 var PropTypes = require('prop-types');
+var Link = require('react-router-dom').Link;
+var ForecastItem = require('./ForecastItem');
 var queryString = require('query-string');
 var api = require('../utils/api');
 var utils = require('../utils/helpers');
-
-function ForecastItem(props) {
-  return (  
-    <div className='forecast-item'>
-      <img src={'app/images/weather-icons/' + props.forecast.weather[0].icon + '.svg'}></img>
-      <h3>{`${props.forecast.temp.min} \u00B0C ~ ${props.forecast.temp.max} \u00B0C`}</h3>
-      <h2>{utils.getDateDescription(props.forecast.dt)}</h2>
-    </div>
-  )
-}
-
-ForecastItem.propTypes = {
-  forecast: PropTypes.object.isRequired
-}
 
 function ForecastsGrid(props) {
   return (
     <div className='forecast-grid'>
       {props.forecasts.list.map(function(forecast) {
-        return <ForecastItem key={forecast.dt} forecast={forecast}/>
+        return <ForecastItem key={forecast.dt} city={props.city} forecast={forecast}/>
       })}
     </div>
   )
 }
 
 ForecastsGrid.propTypes = {
+  city: PropTypes.string.isRequired,
   forecasts: PropTypes.object.isRequired
 }
 
@@ -62,7 +51,7 @@ class Forecast extends React.Component {
       <div className='container'>
         {this.state.loading && <div className='loading'>Loading forecast</div>}
         {this.state.forecasts && <h1 className='city-title'>{this.state.city}</h1>}
-        {this.state.forecasts && <ForecastsGrid forecasts={this.state.forecasts} />}
+        {this.state.forecasts && <ForecastsGrid city={this.state.city} forecasts={this.state.forecasts} />}
       </div>
     )
   }
