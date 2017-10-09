@@ -1,4 +1,5 @@
 var React = require('react');
+var api = require('../utils/api');
 
 class WeatherRequestForm extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class WeatherRequestForm extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event) {
@@ -20,6 +22,14 @@ class WeatherRequestForm extends React.Component {
     })
   }
 
+  handleClick(event) {
+    event.preventDefault();
+    api.requestForecast(this.state.city)
+        .then(function(data) {
+          console.log(data);
+        }.bind(this));
+  }
+
   render() {
     return (
       <form className='request-form'>
@@ -29,7 +39,7 @@ class WeatherRequestForm extends React.Component {
                name='city'
                value={this.state.city} 
                onChange={this.handleChange}/>
-        <button className='btn btn-success' type="submit">Get Weather</button>
+        <button className='btn btn-success' onClick={this.handleClick}>Get Weather</button>
       </form>
     )
   }
