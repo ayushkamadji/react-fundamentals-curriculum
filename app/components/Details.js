@@ -12,7 +12,7 @@ class Details extends React.Component {
   render() {
     return (
       <div className='detail-container'>
-        <ForecastItem forecast={this.state} pathSuffix='..' onClick={function(e){ e.preventDefault()}} />
+        <ForecastItem forecast={this.state} pathSuffix='../' onClick={function(e){ e.preventDefault()}} />
         <div className='city-heading'>{this.props.match.params.city}</div>
         <h4>{this.state.weather[0].description}</h4>
         <ul>

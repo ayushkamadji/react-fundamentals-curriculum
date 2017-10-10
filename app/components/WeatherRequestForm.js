@@ -42,7 +42,7 @@ class WeatherRequestForm extends React.Component {
                onChange={this.handleChange}/>
         <Link className='btn btn-success'
               to={{
-                pathname: 'forecast',
+                pathname: '/forecast',
                 search: '?city=' + this.state.city
               }}>
               Get Weather

@@ -30,10 +30,21 @@ class Forecast extends React.Component {
       forecasts: null,
       loading: true
     }
+
+    this.requestAndUpdate = this.requestAndUpdate.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    var city = queryString.parse(nextProps.location.search).city;
+    this.requestAndUpdate(city);
   }
 
   componentDidMount() {
     var city = queryString.parse(this.props.location.search).city;
+    this.requestAndUpdate(city);
+  }
+
+  requestAndUpdate(city) {
     api.requestForecast(city)
         .then(function(data) {
           this.setState(function() {
